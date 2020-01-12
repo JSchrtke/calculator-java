@@ -37,7 +37,6 @@ public class Calculator {
             } catch (InputMismatchException ime) {
                 System.err.println("Invalid input!");
                 System.err.println(ime.getMessage());
-                scanner.next(); // flush in stream // TODO can I get rid of this somehow?
                 continue;
             }
 
