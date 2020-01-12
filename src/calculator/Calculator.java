@@ -40,13 +40,18 @@ public class Calculator {
                 scanner.next(); // flush in stream // TODO can I get rid of this somehow?
                 continue;
             }
+
         } while (true);
 
         calculation = new MathExpression(firstNumber, secondNumber, operator);
-        result = calculation.evaluate();
 
-        System.out.printf("%.2f %s %.2f = %.2f", firstNumber, operator.toString(), secondNumber, result);
-
-        scanner.close();
+        try {
+            result = calculation.evaluate();
+            System.out.printf("%.2f %s %.2f = %.2f", firstNumber, operator.toString(), secondNumber, result);
+        } catch (ArithmeticException ae) {
+            System.err.println(ae.getMessage());
+        } finally {
+            scanner.close();
+        }
     }
 }

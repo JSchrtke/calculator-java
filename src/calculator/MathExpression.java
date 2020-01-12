@@ -11,7 +11,7 @@ public class MathExpression {
         this.operator = operator;
     }
 
-    public double evaluate() {
+    public double evaluate() throws ArithmeticException {
         return operator.applyTo(leftOperand, rightOperand);
     }
 }
