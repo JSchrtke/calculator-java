@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class Calculator {
     public static void main(String[] args) {
-        double result;
         Operator operator;
         MathExpression calculation;
 
@@ -45,7 +44,6 @@ public class Calculator {
         calculation = new MathExpression(firstNumber, secondNumber, operator);
 
         try {
-            result = calculation.getResult();
             System.out.println(calculation.toString());
         } catch (ArithmeticException ae) {
             System.err.println(ae.getMessage());
