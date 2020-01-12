@@ -11,7 +11,16 @@ public class MathExpression {
         this.operator = operator;
     }
 
-    public double evaluate() throws ArithmeticException {
+    @Override
+    public String toString() {
+        return String.format("%.2f %s %.2f = %.2f", leftOperand, operator.toString(), rightOperand, this.evaluate());
+    }
+
+    private double evaluate() throws ArithmeticException {
         return operator.applyTo(leftOperand, rightOperand);
+    }
+
+    public double getResult() {
+        return this.evaluate();
     }
 }

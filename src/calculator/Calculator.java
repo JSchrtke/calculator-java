@@ -45,8 +45,8 @@ public class Calculator {
         calculation = new MathExpression(firstNumber, secondNumber, operator);
 
         try {
-            result = calculation.evaluate();
-            System.out.printf("%.2f %s %.2f = %.2f", firstNumber, operator.toString(), secondNumber, result);
+            result = calculation.getResult();
+            System.out.println(calculation.toString());
         } catch (ArithmeticException ae) {
             System.err.println(ae.getMessage());
         } finally {
