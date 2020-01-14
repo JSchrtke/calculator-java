@@ -1,15 +1,14 @@
 package calculator;
 
-public class MultiplicationOperator extends Operator {
+public class Addition extends Operation {
 
     @Override
     public double applyTo(double leftOperand, double rightOperand) {
-        return leftOperand * rightOperand;
+        return leftOperand + rightOperand;
     }
 
     @Override
     public String toString() {
-        return "*";
+        return "+";
     }
-
 }

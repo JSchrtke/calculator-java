@@ -1,6 +1,6 @@
 package calculator;
 
-public abstract class Operator {
+public abstract class Operation {
 
     abstract public double applyTo(double leftOperand, double rightOperand) throws ArithmeticException;
 

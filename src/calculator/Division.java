@@ -1,6 +1,6 @@
 package calculator;
 
-public class DivisionOperator extends Operator {
+public class Division extends Operation {
 
     @Override
     public double applyTo(double leftOperand, double rightOperand) throws ArithmeticException {

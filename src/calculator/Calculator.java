@@ -6,19 +6,19 @@ import java.util.Scanner;
 
 public class Calculator {
     public static void main(String[] args) {
-        Operator operator;
+        Operation operation;
         MathExpression calculation;
 
         Scanner scanner = new Scanner(System.in);
-        HashMap<Character, Operator> validOperators = new HashMap<Character, Operator>();
+        HashMap<Character, Operation> validOperations = new HashMap<Character, Operation>();
         double firstNumber = 0;
         double secondNumber = 0;
-        char operatorKey = '+';
+        char operationKey = '+';
 
-        validOperators.put('+', new AdditionOperator());
-        validOperators.put('-', new SubtractionOperator());
-        validOperators.put('*', new MultiplicationOperator());
-        validOperators.put('/', new DivisionOperator());
+        validOperations.put('+', new Addition());
+        validOperations.put('-', new Subtraction());
+        validOperations.put('*', new Multiplication());
+        validOperations.put('/', new Division());
 
         do {
             try {
@@ -27,11 +27,11 @@ public class Calculator {
                 System.out.println("Enter second number: ");
                 secondNumber = scanner.nextDouble();
                 System.out.println("Enter operator: ");
-                operatorKey = scanner.next().charAt(0);
-                if (!validOperators.containsKey(operatorKey)) {
+                operationKey = scanner.next().charAt(0);
+                if (!validOperations.containsKey(operationKey)) {
                     throw new InputMismatchException("No valid operator!");
                 }
-                operator = validOperators.get(operatorKey);
+                operation = validOperations.get(operationKey);
                 break;
             } catch (InputMismatchException ime) {
                 System.err.println("Invalid input!");
@@ -42,7 +42,7 @@ public class Calculator {
 
         } while (true);
 
-        calculation = new MathExpression(firstNumber, secondNumber, operator);
+        calculation = new MathExpression(firstNumber, secondNumber, operation);
 
         try {
             System.out.println(calculation.toString());

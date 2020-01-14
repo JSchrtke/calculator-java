@@ -1,6 +1,6 @@
 package calculator;
 
-public class SubtractionOperator extends Operator {
+public class Subtraction extends Operation {
 
     @Override
     public double applyTo(double leftOperand, double rightOperand) {
