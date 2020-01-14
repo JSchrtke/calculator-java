@@ -5,21 +5,28 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Calculator {
-    public static void main(String[] args) {
-        Operation operation;
-        MathExpression calculation;
+    HashMap<Character, Operation> validOperations;
+    Operation operation;
+    MathExpression calculation;
+    Scanner scanner = new Scanner(System.in);
+    double firstNumber = 0;
+    double secondNumber = 0;
+    char operationKey = '+';
 
-        Scanner scanner = new Scanner(System.in);
-        HashMap<Character, Operation> validOperations = new HashMap<Character, Operation>();
-        double firstNumber = 0;
-        double secondNumber = 0;
-        char operationKey = '+';
+    public Calculator(HashMap<Character, Operation> validOperations) {
+        this.validOperations = validOperations;
+    }
 
-        validOperations.put('+', new Addition());
-        validOperations.put('-', new Subtraction());
-        validOperations.put('*', new Multiplication());
-        validOperations.put('/', new Division());
+    public void doEverything() {
 
+        getInput();
+
+        calculation = new MathExpression(firstNumber, secondNumber, operation);
+
+        System.out.println(calculation.toString());
+    }
+
+    public void getInput() {
         do {
             try {
                 System.out.println("Enter first number: ");
@@ -41,10 +48,9 @@ public class Calculator {
             }
 
         } while (true);
+    }
 
-        calculation = new MathExpression(firstNumber, secondNumber, operation);
-
-        System.out.println(calculation.toString());
+    public void close() {
         scanner.close();
     }
 }
