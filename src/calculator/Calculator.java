@@ -36,6 +36,7 @@ public class Calculator {
             } catch (InputMismatchException ime) {
                 System.err.println("Invalid input!");
                 System.err.println(ime.getMessage());
+                scanner.nextLine(); // TODO remove this after getting input from string
                 continue;
             }
 
