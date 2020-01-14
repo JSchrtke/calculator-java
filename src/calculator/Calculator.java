@@ -44,12 +44,7 @@ public class Calculator {
 
         calculation = new MathExpression(firstNumber, secondNumber, operation);
 
-        try {
-            System.out.println(calculation.toString());
-        } catch (ArithmeticException ae) {
-            System.err.println(ae.getMessage());
-        } finally {
-            scanner.close();
-        }
+        System.out.println(calculation.toString());
+        scanner.close();
     }
 }

@@ -16,7 +16,7 @@ public class MathExpression {
         return String.format("%.2f %s %.2f = %.2f", leftOperand, operation.toString(), rightOperand, this.evaluate());
     }
 
-    private double evaluate() throws ArithmeticException {
+    private double evaluate() {
         return operation.applyTo(leftOperand, rightOperand);
     }
 
