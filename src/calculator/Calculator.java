@@ -19,35 +19,34 @@ public class Calculator {
 
     public void doEverything() {
 
-        getInput();
+        final String userInput = getInput();
+        String mathString = userInput;
+
+        for (Operation operation : this.validOperations.values()) {
+            String currentSignature = operation.getSignatureRegex();
+
+            while (RegexTools.stringContainsRegex(mathString, currentSignature)) {
+                try {
+                    String mathSubString = RegexTools.extractRegexFromString(currentSignature, mathString);
+                    String evaluatedSubString = String
+                            .valueOf(MathExpression.fromString(mathSubString, operation).getResult());
+                    mathString = RegexTools.replaceRegexInString(currentSignature, evaluatedSubString, mathString);
+                } catch (Exception e) {
+                    System.err.println("Exception occured: ");
+                    System.err.println(e.getMessage());
+                }
+            }
+
+        }
 
         calculation = new MathExpression(firstNumber, secondNumber, operation);
 
         System.out.println(calculation.toString());
     }
 
-    public void getInput() {
-        do {
-            try {
-                System.out.println("Enter first number: ");
-                firstNumber = scanner.nextDouble();
-                System.out.println("Enter second number: ");
-                secondNumber = scanner.nextDouble();
-                System.out.println("Enter operator: ");
-                operationKey = scanner.next().charAt(0);
-                if (!validOperations.containsKey(operationKey)) {
-                    throw new InputMismatchException("No valid operator!");
-                }
-                operation = validOperations.get(operationKey);
-                break;
-            } catch (InputMismatchException ime) {
-                System.err.println("Invalid input!");
-                System.err.println(ime.getMessage());
-                scanner.nextLine(); // TODO remove this after getting input from string
-                continue;
-            }
-
-        } while (true);
+    public String getInput() {
+        String result = scanner.nextLine();
+        return result;
     }
 
     public void close() {

@@ -11,4 +11,16 @@ public class Addition extends Operation {
     public String toString() {
         return "+";
     }
+
+    @Override
+    public String getSignatureRegex() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public String getOperatorRegex() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

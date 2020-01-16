@@ -12,4 +12,16 @@ public class Division extends Operation {
         return "/";
     }
 
+    @Override
+    public String getSignatureRegex() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public String getOperatorRegex() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }

@@ -6,4 +6,7 @@ public abstract class Operation {
 
     abstract public String toString();
 
+    abstract public String getSignatureRegex();
+
+    abstract public String getOperatorRegex();
 }
