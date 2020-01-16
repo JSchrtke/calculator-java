@@ -3,21 +3,32 @@ package calculator;
 public class MathExpression {
     private double leftOperand;
     private double rightOperand;
-    private Operator operator;
+    private Operation operation;
 
-    public MathExpression(double leftOperand, double rightOperand, Operator operator) {
+    public MathExpression(double leftOperand, double rightOperand, Operation operation) {
         this.leftOperand = leftOperand;
         this.rightOperand = rightOperand;
-        this.operator = operator;
+        this.operation = operation;
     }
 
-    // 2 + 3 * 5
-    public static MathExpression fromString(String mathExpressionString) {
-        mathExpressionString.split('')
-        return new MathExpression(2, MathExpression.fromString("3 * 5").evaluate(), new AdditionOperator());
+    public static MathExpression fromString(String mathExpressionString, Operation operation) {
+        String[] operands = mathExpressionString.split(operation.getOperatorRegex());
+        double firstOperand = Double.parseDouble(operands[0]);
+        double secondOperand = Double.parseDouble(operands[1]);
+
+        return new MathExpression(firstOperand, secondOperand, operation);
     }
 
-    public double evaluate() throws ArithmeticException {
-        return operator.applyTo(leftOperand, rightOperand);
+    @Override
+    public String toString() {
+        return String.format("%.2f %s %.2f = %.2f", leftOperand, operation.toString(), rightOperand, this.evaluate());
+    }
+
+    private double evaluate() {
+        return operation.applyTo(leftOperand, rightOperand);
+    }
+
+    public double getResult() {
+        return this.evaluate();
     }
 }
