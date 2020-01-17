@@ -2,6 +2,12 @@ package calculator;
 
 import java.util.LinkedHashMap;
 
+import calculator.operation.Operation;
+import calculator.operation.Multiplication;
+import calculator.operation.Division;
+import calculator.operation.Addition;
+import calculator.operation.Subtraction;
+
 public class Calculator {
     private LinkedHashMap<Character, Operation> validOperations;
     private double result;

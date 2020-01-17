@@ -1,6 +1,7 @@
-package calculator;
+package calculator.operation;
 
 public class Addition extends Operation {
+    private static final String operatorRegex = "\\s*\\+\\s*";
 
     @Override
     public double applyTo(double leftOperand, double rightOperand) {
@@ -14,11 +15,11 @@ public class Addition extends Operation {
 
     @Override
     public String getSignatureRegex() {
-        return "([0-9]+(\\.[0-9])*\\s*\\+\\s*[0-9]+\\.*[0-9]*)";
+        return numberRegex + operatorRegex + numberRegex;
     }
 
     @Override
     public String getOperatorRegex() {
-        return "\\+";
+        return operatorRegex;
     }
 }

@@ -1,5 +1,7 @@
 package calculator;
 
+import calculator.operation.Operation;
+
 public class MathExpression {
     private double leftOperand;
     private double rightOperand;

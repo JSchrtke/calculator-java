@@ -21,7 +21,7 @@ public class RegexTools {
         Matcher m = p.matcher(toSearch);
         // if (stringContainsRegex(toSearch, regexPattern))
         if (m.find()) {
-            return m.group(1);
+            return m.group();
         } else {
             throw new Exception("Regex not foud in string!"); // TODO find/make a proper exception for this
         }
