@@ -22,5 +22,4 @@ public class Subtraction extends Operation {
     public String getOperatorRegex() {
         return operatorRegex;
     }
-
 }

@@ -22,5 +22,4 @@ public class Division extends Operation {
     public String getOperatorRegex() {
         return operatorRegex;
     }
-
 }
