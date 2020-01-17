@@ -39,9 +39,10 @@ public class Calculator {
 
         }
 
-        calculation = new MathExpression(firstNumber, secondNumber, operation);
+        // calculation = new MathExpression(firstNumber, secondNumber, operation);
 
-        System.out.println(calculation.toString());
+        // System.out.println(calculation.toString());
+        System.out.printf("%s = %s", userInput, mathString);
     }
 
     public String getInput() {

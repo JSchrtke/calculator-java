@@ -1,19 +1,23 @@
 package calculator;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class CalculatorApp {
     public static void main(String[] args) {
-        HashMap<Character, Operation> validOperations = new HashMap<Character, Operation>();
-        validOperations.put('+', new Addition());
-        validOperations.put('-', new Subtraction());
+        LinkedHashMap<Character, Operation> validOperations = new LinkedHashMap<Character, Operation>();
         validOperations.put('*', new Multiplication());
         validOperations.put('/', new Division());
+        validOperations.put('+', new Addition());
+        validOperations.put('-', new Subtraction());
 
         Calculator calc = new Calculator(validOperations);
 
-        calc.doEverything();
+        while (true) {
+            calc.doEverything();
+            System.out.println("\n");
+        }
 
-        calc.close();
+        // calc.close();
     }
 }

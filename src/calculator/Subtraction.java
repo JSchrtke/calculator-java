@@ -14,14 +14,12 @@ public class Subtraction extends Operation {
 
     @Override
     public String getSignatureRegex() {
-        // TODO Auto-generated method stub
-        return null;
+        return "([0-9]+(\\.[0-9])*\\s*\\-\\s*[0-9]+\\.*[0-9]*)";
     }
 
     @Override
     public String getOperatorRegex() {
-        // TODO Auto-generated method stub
-        return null;
+        return "\\-";
     }
 
 }
