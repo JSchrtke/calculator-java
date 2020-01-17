@@ -1,25 +1,25 @@
 package calculator;
 
-import java.util.HashMap;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.LinkedHashMap;
 
 public class Calculator {
-    HashMap<Character, Operation> validOperations;
-    Operation operation;
-    MathExpression calculation;
-    Scanner scanner = new Scanner(System.in);
-    double firstNumber = 0;
-    double secondNumber = 0;
-    char operationKey = '+';
+    private LinkedHashMap<Character, Operation> validOperations;
+    private double result;
+    private String currentUserInput;
 
-    public Calculator(HashMap<Character, Operation> validOperations) {
-        this.validOperations = validOperations;
+    public Calculator() {
+        this.validOperations = new LinkedHashMap<Character, Operation>();
+        this.validOperations.put('*', new Multiplication());
+        this.validOperations.put('/', new Division());
+        this.validOperations.put('-', new Subtraction());
+        this.validOperations.put('+', new Addition());
+        this.result = 0;
+        this.currentUserInput = "";
     }
 
-    public void doEverything() {
+    public void evaluateString(final String userInput) {
 
-        final String userInput = getInput();
+        this.currentUserInput = userInput;
         String mathString = userInput;
 
         for (Operation operation : this.validOperations.values()) {
@@ -38,19 +38,14 @@ public class Calculator {
             }
 
         }
-
-        // calculation = new MathExpression(firstNumber, secondNumber, operation);
-
-        // System.out.println(calculation.toString());
-        System.out.printf("%s = %s", userInput, mathString);
+        this.result = Double.parseDouble(mathString);
     }
 
-    public String getInput() {
-        String result = scanner.nextLine();
-        return result;
+    public String toString() {
+        return String.format("%s = %.2f", this.currentUserInput, this.result);
     }
 
-    public void close() {
-        scanner.close();
+    public double getResult() {
+        return this.result;
     }
 }
