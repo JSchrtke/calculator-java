@@ -7,6 +7,7 @@ import calculator.operation.Multiplication;
 import calculator.operation.Division;
 import calculator.operation.Addition;
 import calculator.operation.Subtraction;
+import regextools.RegexTools;
 
 public class Calculator {
     private LinkedHashMap<Character, Operation> validOperations;
