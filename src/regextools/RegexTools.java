@@ -15,26 +15,28 @@ public class RegexTools {
         return false;
     }
 
-    public static String extractRegexFromString(String regexPattern, String toSearch) throws Exception {
+    public static String extractRegexFromString(String regexPattern, String toSearch) throws RegexMismatchException {
         // https://alvinalexander.com/blog/post/java/how-extract-group-string-regex-pattern-matcher-find
         Pattern p = Pattern.compile(regexPattern);
         Matcher m = p.matcher(toSearch);
         if (m.find()) {
             return m.group();
         } else {
-            throw new Exception("Regex not foud in string!"); // TODO find/make a proper exception for this
+            String message = String.format("Regex not foud in string!\nFor string : \"%s\" ", toSearch);
+            throw new RegexMismatchException(message); // TODO find/make a proper exception for this
         }
     }
 
     public static String replaceRegexInString(String regexPattern, String replacement, String toSearch)
-            throws Exception {
+            throws RegexMismatchException {
         Pattern p = Pattern.compile(regexPattern);
         Matcher m = p.matcher(toSearch);
         if (m.find()) {
             toSearch = toSearch.replaceFirst(regexPattern, replacement);
             return toSearch;
         } else {
-            throw new Exception("Regex not found in string!"); // TODO find/make a proper exception for this
+            String message = String.format("Regex not foud in string!\nFor string : \"%s\" ", toSearch);
+            throw new RegexMismatchException(message); // TODO find/make a proper exception for this
         }
     }
 }

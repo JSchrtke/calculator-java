@@ -7,6 +7,7 @@ import calculator.operation.Multiplication;
 import calculator.operation.Division;
 import calculator.operation.Addition;
 import calculator.operation.Subtraction;
+import regextools.RegexMismatchException;
 import regextools.RegexTools;
 
 public class Calculator {
@@ -24,7 +25,7 @@ public class Calculator {
         this.currentUserInput = "";
     }
 
-    public void evaluateString(final String userInput) {
+    public void evaluateString(final String userInput) throws RegexMismatchException, NumberFormatException {
 
         this.currentUserInput = userInput;
         String mathString = userInput;
@@ -33,15 +34,10 @@ public class Calculator {
             String currentSignature = operation.getSignatureRegex();
 
             while (RegexTools.stringContainsRegex(mathString, currentSignature)) {
-                try {
-                    String mathSubString = RegexTools.extractRegexFromString(currentSignature, mathString);
-                    String evaluatedSubString = String
-                            .valueOf(MathExpression.fromString(mathSubString, operation).getResult());
-                    mathString = RegexTools.replaceRegexInString(currentSignature, evaluatedSubString, mathString);
-                } catch (Exception e) {
-                    System.err.println("Exception occured: ");
-                    System.err.println(e.getMessage());
-                }
+                String mathSubString = RegexTools.extractRegexFromString(currentSignature, mathString);
+                String evaluatedSubString = String
+                        .valueOf(MathExpression.fromString(mathSubString, operation).getResult());
+                mathString = RegexTools.replaceRegexInString(currentSignature, evaluatedSubString, mathString);
             }
 
         }
@@ -49,10 +45,22 @@ public class Calculator {
     }
 
     public String toString() {
-        return String.format("%s = %.2f", this.currentUserInput, this.result);
+        String result;
+        try {
+            result = String.format("%s = %.2f", this.currentUserInput, getResult());
+        } catch (ArithmeticException ae) {
+            result = ae.getMessage();
+        }
+        return result;
     }
 
-    public double getResult() {
-        return this.result;
+    public double getResult() throws ArithmeticException {
+        if (Double.isInfinite(this.result)) {
+            throw new ArithmeticException("Zero division!");
+        } else if (Double.isNaN(this.result)) {
+            throw new ArithmeticException("Not a number!");
+        } else {
+            return this.result;
+        }
     }
 }
