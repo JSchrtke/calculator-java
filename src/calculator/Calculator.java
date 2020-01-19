@@ -25,7 +25,7 @@ public class Calculator {
         this.currentUserInput = "";
     }
 
-    public void evaluateString(final String userInput) throws RegexMismatchException, NumberFormatException {
+    public void evaluateString(final String userInput) throws NumberFormatException {
 
         this.currentUserInput = userInput;
         String mathString = userInput;
@@ -34,10 +34,15 @@ public class Calculator {
             String currentSignature = operation.getSignatureRegex();
 
             while (RegexTools.stringContainsRegex(mathString, currentSignature)) {
-                String mathSubString = RegexTools.extractRegexFromString(currentSignature, mathString);
-                String evaluatedSubString = String
-                        .valueOf(MathExpression.fromString(mathSubString, operation).getResult());
-                mathString = RegexTools.replaceRegexInString(currentSignature, evaluatedSubString, mathString);
+                try {
+                    String mathSubString = RegexTools.extractRegexFromString(currentSignature, mathString);
+                    String evaluatedSubString = String
+                            .valueOf(MathExpression.fromString(mathSubString, operation).getResult());
+                    mathString = RegexTools.replaceRegexInString(currentSignature, evaluatedSubString, mathString);
+                } catch (RegexMismatchException rme) {
+                    System.err.println(rme.getMessage());
+                    mathString = "";
+                }
             }
 
         }

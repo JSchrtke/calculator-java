@@ -2,8 +2,6 @@ package calculator;
 
 import java.util.Scanner;
 
-import regextools.RegexMismatchException;
-
 public class CalculatorApp {
     public static void main(String[] args) {
         Calculator calc = new Calculator();
@@ -14,7 +12,7 @@ public class CalculatorApp {
             try {
                 calc.evaluateString(userInput);
                 System.out.println(calc.toString());
-            } catch (RegexMismatchException | NumberFormatException e) {
+            } catch (NumberFormatException e) {
                 System.err.println("Invalid input!");
                 System.err.println(e.getMessage());
             }
