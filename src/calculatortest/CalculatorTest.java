@@ -13,8 +13,8 @@ public class CalculatorTest {
 		assertEquals(expected, c.getResult(), 1e-6);
 	}
 
-	@Test
-	public void emptyInputIsIgnored() {
+	@Test(expected = NumberFormatException.class)
+	public void emptyInputThrowsNumberFormatException() {
 		calc("", 0);
 	}
 
@@ -23,10 +23,8 @@ public class CalculatorTest {
 		calc("12.25", 12.25);
 	}
 
-	@Test
+	@Test(expected = ArithmeticException.class)
 	public void divisionByZeroIsError() {
 		calc("1/0", 0);
-		// TODO output is always a double, Calculator does not even address invalid
-		// input
 	}
 }
