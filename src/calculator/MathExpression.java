@@ -23,7 +23,8 @@ public class MathExpression {
 
     @Override
     public String toString() {
-        return String.format("%.2f %s %.2f = %.2f", leftOperand, operation.toString(), rightOperand, this.evaluate());
+        return String.format("%.2f %s %.2f = %.2f", leftOperand, operation.toString(), rightOperand,
+                this.evaluate());
     }
 
     private double evaluate() {

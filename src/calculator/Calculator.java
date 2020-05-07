@@ -35,10 +35,12 @@ public class Calculator {
 
             while (RegexTools.stringContainsRegex(mathString, currentSignature)) {
                 try {
-                    String mathSubString = RegexTools.extractRegexFromString(currentSignature, mathString);
-                    String evaluatedSubString = String
-                            .valueOf(MathExpression.fromString(mathSubString, operation).getResult());
-                    mathString = RegexTools.replaceRegexInString(currentSignature, evaluatedSubString, mathString);
+                    String mathSubString =
+                            RegexTools.extractRegexFromString(currentSignature, mathString);
+                    String evaluatedSubString = String.valueOf(
+                            MathExpression.fromString(mathSubString, operation).getResult());
+                    mathString = RegexTools.replaceRegexInString(currentSignature,
+                            evaluatedSubString, mathString);
                 } catch (RegexMismatchException rme) {
                     System.err.println(rme.getMessage());
                     mathString = "";
