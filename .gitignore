@@ -1,6 +1,7 @@
 .vscode
 .project
 .settings
+.vimspector.json
 
 # Compiled class file
 *.class
