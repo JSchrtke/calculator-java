@@ -1,4 +1,4 @@
-package calculator;
+package main.java.com.fiae19n.calculator;
 
 import java.util.Scanner;
 

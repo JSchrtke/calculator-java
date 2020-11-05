@@ -1,4 +1,4 @@
-package calculator.operation;
+package main.java.com.fiae19n.calculator.operation;
 
 public class Multiplication extends Operation {
     private static final String operatorRegex = "\\s*\\*\\s*";

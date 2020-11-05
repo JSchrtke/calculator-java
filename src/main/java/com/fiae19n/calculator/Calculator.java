@@ -1,14 +1,14 @@
-package calculator;
+package main.java.com.fiae19n.calculator;
 
 import java.util.LinkedHashMap;
 
-import calculator.operation.Operation;
-import calculator.operation.Multiplication;
-import calculator.operation.Division;
-import calculator.operation.Addition;
-import calculator.operation.Subtraction;
-import regextools.RegexMismatchException;
-import regextools.RegexTools;
+import main.java.com.fiae19n.calculator.operation.Operation;
+import main.java.com.fiae19n.calculator.operation.Multiplication;
+import main.java.com.fiae19n.calculator.operation.Division;
+import main.java.com.fiae19n.calculator.operation.Subtraction;
+import main.java.com.fiae19n.calculator.operation.Addition;
+import main.java.com.fiae19n.calculator.regextools.RegexTools;
+import main.java.com.fiae19n.calculator.regextools.RegexMismatchException;
 
 public class Calculator {
     private LinkedHashMap<Character, Operation> validOperations;
