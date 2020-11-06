@@ -2,6 +2,7 @@
 .project
 .settings
 .vimspector.json
+target/
 
 # Compiled class file
 *.class
