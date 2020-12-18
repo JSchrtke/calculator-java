@@ -1,4 +1,4 @@
-package regextools;
+package main.java.com.fiae19n.calculator.regextools;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

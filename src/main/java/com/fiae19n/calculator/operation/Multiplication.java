@@ -1,16 +1,16 @@
-package calculator.operation;
+package main.java.com.fiae19n.calculator.operation;
 
-public class Subtraction extends Operation {
-    private static final String operatorRegex = "\\s*\\-\\s*";
+public class Multiplication extends Operation {
+    private static final String operatorRegex = "\\s*\\*\\s*";
 
     @Override
     public double applyTo(double leftOperand, double rightOperand) {
-        return leftOperand - rightOperand;
+        return leftOperand * rightOperand;
     }
 
     @Override
     public String toString() {
-        return "-";
+        return "*";
     }
 
     @Override
@@ -22,4 +22,5 @@ public class Subtraction extends Operation {
     public String getOperatorRegex() {
         return operatorRegex;
     }
+
 }

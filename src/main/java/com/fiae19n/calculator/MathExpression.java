@@ -1,6 +1,6 @@
-package calculator;
+package main.java.com.fiae19n.calculator;
 
-import calculator.operation.Operation;
+import main.java.com.fiae19n.calculator.operation.Operation;
 
 public class MathExpression {
     private double leftOperand;
